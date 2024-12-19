@@ -1,0 +1,55 @@
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class Customer {
+    private String name;
+    private BankAccount account;
+
+    public Customer(String name, BankAccount account) {
+        this.name = name;
+        this.account = account;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BankAccount getAccount() {
+        return account;
+    }
+}
+
+public class OnlineBankingApplication {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("12345", 500.0);
+        Customer customer = new Customer("John Doe", account);
+
+        System.out.println("Customer: " + customer.getName());
+        System.out.println("Initial Balance: " + account.getBalance());
+
+        account.deposit(200.0);
+        System.out.println("After Deposit: " + account.getBalance());
+
+        account.withdraw(100.0);
+        System.out.println("After Withdrawal: " + account.getBalance());
+    }
+}ч
